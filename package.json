@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/brookecalhoun/koruserver#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^6.0.6",
     "rowdy-logger": "^1.0.2"
