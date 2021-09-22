@@ -4,7 +4,8 @@ const data = require('./journalData.json')
 // Delete
 
 db.Journal.deleteMany({}, (err, result) => {
-    // establishing mongo for articles that are part of each Journal
+    // establishing mongo for entries that are part of each Journal
+    db.Entry.deleteMany({},(err,result)=>{
         if (err){
             console.log(err)
             process.exit()
@@ -14,22 +15,34 @@ db.Journal.deleteMany({}, (err, result) => {
           process.exit();
         }
         console.log(result.deletedCount, 'Journal deleted')
-        console.log('data. journalEntries console log' , data.journalEntries)
-        // establishing mongo for articles that are part of each Journal
-        db.Journal.create(data.journalEntries,(err,seededjournalEntries) =>{
+        let entries = []
+        for (let i=0;i<data.journals.length;i++){
+            console.log(data.journals[i])
+            entries.push(data.journals[i].entries || [])
+            delete data.journals[i].entries
+        }
+        console.log('data. journals console log' , data.journals)
+        console.log('entries console log' , entries)
+        // establishing mongo for entries that are part of each Journal
+        db.Journal.create(data.journals,(err,seededjournals) =>{
             if (err) {
                 console.log(err)
                 process.exit()
             }
+            db.Entry.create(entries[0], (err,result)=>{
                 if(err){
                     console.log(err)
                     process.exit()
                 }
                 console.log("RESULLLT" , result)
-                seededjournalEntries[0].articles.push(result)
-                db.Journal.findByIdAndUpdate(seededjournalEntries[0]._id,(err)=>{
+                seededjournals[0].entries.push(result)
+                db.Journal.findByIdAndUpdate(seededjournals[0]._id,{ $push: {entries:result} },(err)=>{
                     if (err) return console.log(err)
                     process.exit()
                 })
+            })
+        
+        })
+
     })
 })

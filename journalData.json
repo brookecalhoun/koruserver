@@ -1,8 +1,13 @@
 {
-    "journal":[
+    "journals":[
         {
-            "entry": "lorem ipsum",
-            "date": "september/20/1998"
+            "date": "september/20/1998",
+            "entries": [
+                {
+                    "content" : "aflkasd;lfadslfja;sldkjfadls;fj"
+                }
+                
+            ]
         }
     ]
 }
