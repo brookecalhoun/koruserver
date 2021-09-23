@@ -1,10 +1,7 @@
 const router = require('express').Router();
 const db = require('../models');
 
-// BASE ROUTE - /api/cities
-
-// actual route - GET /api/journal
-
+//BASE ROUTE - /api/journal
 router.get('/', (req, res) => {
   db.Journal.find({}, (err, foundJournal) => {
     console.log('hello from get')
@@ -19,10 +16,10 @@ router.get('/', (req, res) => {
 });
 
 
-// actual route - GET /api/cities/:id
+// actual route - GET /api/journal/:id
 router.get('/:id', (req, res) => {
   db.Journal.findById(req.params.id, (err, foundJournal) => {
-      console.log('hello from one entry')
+      console.log('hello from one journal')
     if (err) return console.log(err);
     
     res.json(foundJournal);
@@ -31,7 +28,7 @@ router.get('/:id', (req, res) => {
 });
 
 
-// actual route - POST /api/journal
+// actual route - POST /api/cities
 router.post('/', (req, res) => {
   
   db.Journal.create(req.body, (err, savedJournal) => {
@@ -43,12 +40,12 @@ router.post('/', (req, res) => {
 });
 
 
-// actual route - PUT /api/journal/:id
+// actual route - PUT /api/cities/:id
 router.put('/:id', (req, res) => {
   db.Journal.findByIdAndUpdate(
-    req.params.id, // finds the Journal with id passed in from URL
-    req.body, // passes in data to update a Journal from the req.body
-    {new: true}, // We want to updated Journal returned in the callback
+    req.params.id, // finds the City with id passed in from URL
+    req.body, // passes in data to update a City from the req.body
+    {new: true}, // We want to updated City returned in the callback
     (err, updatedJournal) => { // function called after update completes
       if (err) return console.log(err);
       
@@ -57,7 +54,7 @@ router.put('/:id', (req, res) => {
 });
 
 
-// actual route - DELETE /api/journal/:id
+// actual route - DELETE /api/cities/:id
 router.delete('/:id', (req, res) => {
   console.log('delete route')
   db.Journal.findByIdAndDelete(req.params.id, (err, deletedJournal) => {

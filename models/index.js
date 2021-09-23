@@ -14,6 +14,5 @@ mongoose.connect(connectionString, configOptions)
 
 module.exports = {
   Journal: require('./Journal').Journal,
-  Entry: require('./Journal').Entry,
   User: require('./User')
 };
