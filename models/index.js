@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const connectionString = process.env.MONGODB_URI || 'mongodb://localhost:27017/journallib';
-
+console.log(process.env.MONGODB_URI)
 const configOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
