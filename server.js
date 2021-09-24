@@ -28,7 +28,6 @@ app.post("/signup", (req, res) => {
       if (err) console.log(err);
       console.log(createdUser);
       // 3. ✅ Redirect to /login
-      //TALK TO HENRY ABOUT THIS
       req.session.currentUser = createdUser;
       res.json({
           message: "We successfully signed up for an account. Hooray!"
@@ -45,7 +44,6 @@ app.post("/signup", (req, res) => {
       if (err) return console.log(err);
       // If the username is not correct, send them to the /login page
       if (!foundUser) {
-        //TALK TO HENRY ABOUT THIS
         return res.json({
             message: "Username is not found"
         });
@@ -53,7 +51,6 @@ app.post("/signup", (req, res) => {
       // 2. ✅ Check if the password passed in matches the one on file,
       // if not send them to the /login page
       if (req.body.password !== foundUser.password) {
-        //TALK TO HENRY ABOUT THIS
         return res.json({
             message: "Wrong password"
         });
@@ -65,8 +62,6 @@ app.post("/signup", (req, res) => {
   
       console.log(req.session);
   
-      // After successfully logging in go the fruits index page
-      //TALK TO HENRY ABOUT THIS
       res.json({
           message: "You are now logged in"
       });
