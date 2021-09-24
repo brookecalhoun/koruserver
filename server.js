@@ -17,7 +17,7 @@ app.use(express.json())
 
 // authentication
 
-app.use(session({ secret: 'my_secret'}));
+app.use(session({ secret: process.env.SESSION_SECRET }));
 
 // Sign Up a New User
 app.post("/signup", (req, res) => {
@@ -81,8 +81,8 @@ app.post("/signup", (req, res) => {
 // api routes
 app.use('/api/journal', journalController)
 // listen
-app.listen(process.env.PORT || 3000)
-// app.listen(port, () => {
-//     console.log(`Server is running on port ${port}`)
-//     rowdyResults.print()
-// })
+// app.listen(process.env.PORT || 3000)
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`)
+    rowdyResults.print()
+})
