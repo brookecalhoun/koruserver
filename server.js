@@ -81,8 +81,8 @@ app.post("/signup", (req, res) => {
 // api routes
 app.use('/api/journal', journalController)
 // listen
-app.listen(process.env.PORT || 3001)
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
-    rowdyResults.print()
-})
+app.listen(process.env.PORT || 3000)
+// app.listen(port, () => {
+//     console.log(`Server is running on port ${port}`)
+//     rowdyResults.print()
+// })
