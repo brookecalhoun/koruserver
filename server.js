@@ -17,7 +17,7 @@ app.use(express.json())
 
 // authentication
 
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({ secret: 'my_secret'}));
 
 // Sign Up a New User
 app.post("/signup", (req, res) => {
