@@ -9,6 +9,7 @@ const app = express();
 const rowdy = require("rowdy-logger");
 const rowdyResults = rowdy.begin(app);
 const db = require("./models");
+const checkJwt = require('./middleware/checkJwt')
 
 // middleware
 
@@ -26,7 +27,7 @@ app.use(
 );
 
 // controllers
-app.use('/journalController.js', require('./controllers/journalController'))
+app.use('/journalController.js', checkJwt, require('./controllers/journalController'))
 app.use('/auth', require('./controllers/auth'))
 
 // // Sign Up a New User
