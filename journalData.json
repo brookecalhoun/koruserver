@@ -1,6 +1,6 @@
 {
-    "journal": {
-        "date":"09/20/1998",
-        "entry": "hello i am an entry from seeded data"
-    }
+  "journal": {
+    "date": "09/20/1998",
+    "entry": "hello i am an entry from seeded data"
+  }
 }

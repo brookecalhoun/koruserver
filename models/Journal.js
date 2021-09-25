@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const JournalSchema = new Schema({
@@ -6,6 +6,6 @@ const JournalSchema = new Schema({
   date: String,
 });
 
-const Journal = mongoose.model('Journal', JournalSchema);
+const Journal = mongoose.model("Journal", JournalSchema);
 
-module.exports = {Journal} 
+module.exports = { Journal };
