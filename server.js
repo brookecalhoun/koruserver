@@ -27,7 +27,7 @@ app.use(
 );
 
 // controllers
-app.use('/journalController.js', checkJwt, require('./controllers/journalController'))
+app.use('/journal', checkJwt, require('./controllers/journalController'))
 app.use('/auth', require('./controllers/auth'))
 
 // // Sign Up a New User
@@ -85,7 +85,7 @@ app.use('/auth', require('./controllers/auth'))
 // });
 
 // api routes
-app.use("/api/journal", journalController);
+// app.use("/api/journal", journalController);
 // listen
 
 app.listen(port, () => {
