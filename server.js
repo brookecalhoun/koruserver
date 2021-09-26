@@ -9,6 +9,7 @@ const app = express();
 const rowdy = require("rowdy-logger");
 const rowdyResults = rowdy.begin(app);
 const db = require("./models");
+const jwtCheck = require('./middleware/checkJwt')
 
 
 // middleware
@@ -18,6 +19,8 @@ app.use(express.json());
 // api routes
 app.use('/auth', auth)
 app.use("/api/journal", journalController);
+
+
 // listen
 
 app.listen(port, () => {

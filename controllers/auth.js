@@ -1,18 +1,20 @@
-const router = require('express').Router()
 const db = require('../models')
 
-router.post('/', async (req,res) => {
+const router = require('express').Router()
+
+router.post('/', async (req, res) => {
     const id = req.body.auth0Id
-    console.log(id)    
-
+    console.log(id)
     const user = await db.User.findOne({ auth0Id: id })
+    console.log('the user', user)
+
     if(!user) {
-        const newlyCreatedUser = await db.User.create({ auth0Id: id })
-        console.log(newlyCreatedUser)
+        const newUser = await db.User.create({ auth0Id: id })
+        console.log('created', newUser)
     }
-
-
-    res.json({ msg: 'thanks for visiting the /auth route'})
+    
+    res.send({ msg: `okay thanks for sending me ${req.body.auth0Id}`})
 })
+
 
 module.exports = router
